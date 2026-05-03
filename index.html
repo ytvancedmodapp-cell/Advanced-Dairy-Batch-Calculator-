@@ -1,0 +1,1366 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dairy Milk Standardization</title>
+
+<style>
+/* ================= UI STYLE LAYER (SAFE TO EDIT) ================= */
+
+body{font-family:Segoe UI,Arial;margin:0;background:linear-gradient(135deg,#e3f2fd,#ffffff);}
+.container{max-width:850px;margin:25px auto;background:white;padding:25px;border-radius:12px;box-shadow:0 10px 25px rgba(0,0,0,0.15);}
+h1{text-align:center;margin-bottom:5px;}
+.subtitle{text-align:center;color:#666;margin-bottom:20px;font-size:14px;}
+.section{margin-bottom:20px;border-radius:10px;overflow:hidden;box-shadow:0 3px 8px rgba(0,0,0,0.08);}
+.section-header{background:#1976d2;color:white;font-weight:bold;font-size:18px;padding:10px;text-align:center;}
+.section-body{padding:15px;background:#f7faff;}
+.subheading{font-weight:bold;font-size:15px;margin-top:10px;}
+.labelRow{display:flex;gap:12px;margin-top:8px;font-size:13px;font-weight:bold;color:#555;}
+.row-group{
+display:flex;
+gap:10px;
+margin-top:5px;
+}
+.row-group .field{
+flex:1;
+min-width:0;
+}
+.field{flex:1;}
+input,select{width:100%;padding:10px;border-radius:6px;border:1px solid #ccc;margin-top:5px;font-size:15px;}
+button{padding:14px;width:100%;border:none;border-radius:8px;font-size:16px;font-weight:bold;cursor:pointer;background:linear-gradient(90deg,#2e7d32,#43a047);color:white;margin-top:10px;}
+.whatsappBtn{background:#25D366;margin-top:15px;}
+.result{margin-top:25px;background:#f7faff;padding:20px;border-radius:10px;font-size:17px;line-height:2;}
+.boldVal{font-weight:bold;}
+.rawColor{color:#6a1b9a;}
+.butterColor{color:#d32f2f;}
+.smpColor{color:#1565c0;}
+.waterColor{color:#2e7d32;}
+.skimColor{color:#ff6f00;}
+.batchColor{color:#000;}
+.fatColor{color:#c62828;}
+.snfColor{color:#00838f;}
+
+
+/* ===== INDUSTRY RESULT PANEL STYLE ===== */
+.result input{
+font-weight:800;
+font-size:18px;
+text-align:right;
+background:#ffffff;
+border:2px solid #e0e0e0;
+}
+
+.result label{
+font-weight:700;
+}
+
+.result .field{
+display:flex;
+flex-direction:column;
+}
+
+
+
+
+
+
+
+.fatSnfPanel{
+display:flex;
+gap:12px;
+margin-top:15px;
+}
+
+.fatCard,.snfCard{
+flex:1;
+padding:14px;
+border-radius:10px;
+color:white;
+text-align:center;
+font-weight:bold;
+font-size:18px;
+}
+
+.fatCard{background:#c62828;}
+.snfCard{background:#00838f;}
+
+.fatCard span,.snfCard span{
+display:block;
+font-size:26px;
+margin-top:5px;
+}
+
+
+
+/* Professional aligned result rows with dividers */
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ===== CLEAN RESULT ROW STYLE (SINGLE SOURCE) ===== */
+.resultRow{
+display:flex;
+align-items:center;
+justify-content:space-between;
+padding:8px 0;
+border-bottom:1px solid #dcdcdc;
+font-size:16px;
+}
+
+.resultRow:last-child{
+border-bottom:none;
+}
+
+.resultRow label{
+width:65%;
+font-weight:700;
+letter-spacing:0.2px;
+}
+
+.resultRow input{
+width:95px;
+text-align:right;
+font-weight:800;
+font-size:18px;
+border-radius:6px;
+border:2px solid #dcdcdc;
+background:#ffffff;
+padding:6px 8px;
+}
+
+
+/* ===== SETTINGS GEAR ===== */
+.settings-btn{
+position:absolute;
+top:15px;
+right:20px;
+background:transparent;
+color:#000;
+border:none;
+border-radius:0;
+width:auto;
+height:auto;
+font-size:22px;
+cursor:pointer;
+box-shadow:none;
+display:flex;
+align-items:center;
+justify-content:center;
+z-index:999;
+}
+
+
+.back-btn{
+position:absolute;
+top:15px;
+left:20px;
+background:transparent;
+color:#000;
+border:none;
+border-radius:0;
+width:auto;
+height:auto;
+font-size:22px;
+cursor:pointer;
+box-shadow:none;
+display:flex;
+align-items:center;
+justify-content:center;
+z-index:999;
+}
+
+.settings-panel{
+position:fixed;
+top:70px;
+right:20px;
+background:white;
+border-radius:10px;
+box-shadow:0 8px 20px rgba(0,0,0,0.25);
+padding:15px;
+display:none;
+width:220px;
+z-index:999;
+}
+
+.settings-panel input{
+width:100%;
+padding:6px;
+margin-bottom:10px;
+}
+
+
+/* ===== Professional Dairy Console Adjustments ===== */
+
+/* tighter numeric rows */
+
+
+/* labels slightly lighter but bold */
+
+
+/* numbers right aligned like plant consoles */
+
+
+/* editable fields – border highlight only (no fill) */
+#r_water,#r_skim,#r_leak,#r_cream{
+background:#ffffff;
+border:2px solid #f2c94c;
+}
+
+/* total row – clearer but simple */
+#r_batch{
+background:#ffffff;
+border:2px solid #7cb342;
+font-weight:900;
+}
+
+/* FAT/SNF industrial style */
+.fatCard,.snfCard{
+font-size:18px;
+letter-spacing:0.5px;
+padding:14px;
+border-radius:10px;
+}
+
+</style>
+</head>
+
+<body>
+
+</div>
+
+
+
+<div id="logContainer" style="display:grid;gap:15px;"></div>
+</div>
+<div id="calculatorPage" style="display:block;">
+
+
+
+<button class="settings-btn" onclick="toggleSettings()" title="Constants">&#9881;</button>
+
+<div class="settings-panel" id="settingsPanel">
+<b>Constants</b><br>
+
+<label>Butter Oil Fat %</label>
+<input id="butterFatInput" type="number" step="0.1" value="82.5">
+
+<label>Butter Density</label>
+<input id="butterDensityInput" type="number" step="0.01" value="0.94">
+
+<label>SMP SNF %</label>
+<input id="smpSNFInput" type="number" step="0.1" value="96.5">
+
+<button onclick="applyConstants()">Apply</button>
+</div>
+
+
+<div class="container">
+
+<h1 id="title">Dairy Milk Standardization</h1>
+<div class="subtitle">Pure Mass Balance Solver</div>
+
+
+<div class="section">
+<div class="section-header" id="variantHeader">Batch Details</div>
+<div class="section-body">
+
+<div class="subheading">Milk Variant</div>
+<select id="variant" onchange="setVariant()">
+<option value="">Select Variant</option>
+<option value="Cow Milk">Cow Milk (3.5 / 8.5)</option>
+<option value="Gold Milk">Gold Milk (4.5 / 9.0)</option>
+<option value="TMate">TMate (5.5 / 10.0)</option>
+<option value="Full Cream Milk">Full Cream Milk (6.0 / 9.0)</option>
+<option value="DTM">DTM - Double Toned Milk (1.5 / 9.0)</option>
+</select>
+
+<div class="labelRow">
+<div class="field">Required FAT %</div>
+<div class="field">Required SNF %</div>
+</div>
+
+<div class="row-group">
+<div class="field"><input id="reqFat"></div>
+<div class="field"><input id="reqSNF"></div>
+</div>
+
+<div class="subheading">Batch Quantity (L)</div>
+<input id="batchQty">
+
+</div>
+</div>
+
+
+<div class="section">
+<div class="section-header">Raw Milk Composition</div>
+<div class="section-body">
+<div class="row-group">
+<div class="field">
+<div class="subheading">Raw FAT %</div>
+<input id="rawFat">
+</div>
+<div class="field">
+<div class="subheading">Raw SNF %</div>
+<input id="rawSNF">
+</div>
+</div>
+</div>
+</div>
+
+<div class="section">
+<div class="section-header">Additions</div>
+<div class="section-body">
+
+<div class="subheading">Water</div>
+<div class="labelRow">
+<div class="field">Quantity (L)</div>
+</div>
+<div class="row-group">
+<div class="field"><input id="waterQty"></div>
+</div>
+
+<div class="subheading">Skim Milk</div>
+<div class="labelRow">
+<div class="field">Quantity (L)</div>
+<div class="field">Fat %</div>
+<div class="field">SNF %</div>
+</div>
+<div class="row-group">
+<div class="field"><input id="skimQty"></div>
+<div class="field"><input id="skimFat" value="0.05"></div>
+<div class="field"><input id="skimSNF" value="8.4"></div>
+</div>
+
+<div class="subheading">Leak Milk</div>
+<div class="labelRow">
+<div class="field">Quantity (L)</div>
+<div class="field">Fat %</div>
+<div class="field">SNF %</div>
+</div>
+<div class="row-group">
+<div class="field"><input id="leakQty"></div>
+<div class="field"><input id="leakFat"></div>
+<div class="field"><input id="leakSNF"></div>
+</div>
+
+<div class="subheading">Cream</div>
+<div class="labelRow">
+<div class="field">Quantity (L)</div>
+<div class="field">Fat %</div>
+<div class="field">SNF %</div>
+</div>
+<div class="row-group">
+<div class="field"><input id="creamQty"></div>
+<div class="field"><input id="creamFat"></div>
+<div class="field"><input id="creamSNF" value="5.5"></div>
+</div>
+
+<div class="subheading">WMP</div>
+<div class="labelRow">
+<div class="field">Quantity (Bags)</div>
+<div class="field">Fat %</div>
+<div class="field">SNF %</div>
+</div>
+<div class="row-group">
+<div class="field"><input id="wmpQty"></div>
+<div class="field"><input id="wmpFat" value="26"></div>
+<div class="field"><input id="wmpSNF" value="70.5"></div>
+</div>
+
+
+</div>
+</div>
+
+
+
+<div class="section">
+<div class="section-header">Results</div>
+<div class="section-body">
+<div class="result" id="result"></div>
+</div>
+</div>
+
+</div>
+
+<script>
+"use strict";
+window.onerror=function(msg,src,line){console.log('JS Error:',msg,'Line:',line);};
+
+
+let butterDensity = 0.94;
+let butterFat = 0.825;
+let smpSNF = 0.965;
+
+function toggleSettings(){
+let p=document.getElementById("settingsPanel");
+p.style.display = (p.style.display==="block") ? "none" : "block";
+}
+// Close settings panel when clicking outside
+document.addEventListener("click", function(e){
+
+let panel = document.getElementById("settingsPanel");
+let gear = document.querySelector(".settings-btn");
+
+if(panel.style.display === "block"){
+
+if(!panel.contains(e.target) && !gear.contains(e.target)){
+panel.style.display = "none";
+}
+
+}
+
+});
+
+
+
+
+
+/* ================= THEME CONTROLLER (SAFE TO EDIT COLORS) ================= */
+
+function setVariant(){
+
+let v=document.getElementById("variant").value;
+
+if(!v){return;}
+
+if(v==="Cow Milk"){reqFat.value=3.5;reqSNF.value=8.5;setTheme("#6a1b9a");}
+else if(v==="Gold Milk"){reqFat.value=4.5;reqSNF.value=9.0;setTheme("#ff9800");}
+else if(v==="TMate"){reqFat.value=5.5;reqSNF.value=10.0;setTheme("#d32f2f");}
+else if(v==="Full Cream Milk"){reqFat.value=6.0;reqSNF.value=9.0;setTheme("#6d4c41");}
+else if(v==="DTM"){reqFat.value=1.5;reqSNF.value=9.0;setTheme("#00897b");}
+
+}
+
+function setTheme(color){
+document.getElementById("variantHeader").style.background=color;
+document.getElementById("title").style.color=color;
+}
+
+/* ================= CALCULATION ENGINE (DO NOT MODIFY) ================= */
+
+
+
+function val(id){return parseFloat(document.getElementById(id).value)||0;}
+
+function roundHalf(v){ return Math.round(v*2)/2; }
+function round10(v){ return Math.round(v/10)*10; }
+
+function densityFromFS(f,s){return 1+((s-(0.2*f)-0.36)*4)/1000;}
+
+
+
+let calcTimer;
+
+function triggerCalculate(){
+    clearTimeout(calcTimer);
+    calcTimer = setTimeout(function(){
+        try{
+            triggerCalculate();
+        }catch(e){}
+    },120);
+}
+
+function calculate(){
+
+let batch=val("batchQty");
+let rawFat=val("rawFat");
+let rawSNF=val("rawSNF");
+let reqFat=val("reqFat")/100;
+let reqSNF=val("reqSNF")/100;
+
+let water=val("waterQty");
+let skim=val("skimQty");
+let skimFat=val("skimFat");
+let skimSNF=val("skimSNF");
+let leak = val("leakQty");
+let leakFat=val("leakFat");
+let leakSNF=val("leakSNF");
+let cream=val("creamQty");
+let wmp=val("wmpQty");
+let wmpFat=val("wmpFat");
+let wmpSNF=val("wmpSNF");
+let creamFat=val("creamFat");
+let creamSNF=val("creamSNF");
+
+let rawDensity=densityFromFS(rawFat,rawSNF);
+let leakDensity=densityFromFS(leakFat,leakSNF);
+let creamDensity=densityFromFS(creamFat,creamSNF);
+
+
+let rawMilkEst = batch-(water+skim+leak+cream);
+let rawKg = rawMilkEst * rawDensity;
+
+let skimKg=skim*1.03;
+let leakKg=leak*leakDensity;
+let creamKg=cream*creamDensity;
+let wmpKg=wmp*25;
+let waterKg=water;
+
+let fatRaw=rawKg*rawFat/100;
+let snfRaw=rawKg*rawSNF/100;
+
+let fatAdd=(skimKg*skimFat/100)+(leakKg*leakFat/100)+(creamKg*creamFat/100)+(wmpKg*wmpFat/100);
+let snfAdd=(skimKg*skimSNF/100)+(leakKg*leakSNF/100)+(creamKg*creamSNF/100)+(wmpKg*wmpSNF/100);
+
+let totalFat=fatRaw+fatAdd;
+let totalSNF=snfRaw+snfAdd;
+
+let totalMass=rawKg+skimKg+leakKg+creamKg+wmpKg+waterKg;
+
+let a1=butterFat-reqFat;
+let b1=-reqFat;
+let c1=reqFat*totalMass-totalFat;
+
+let a2=-reqSNF;
+let b2=smpSNF-reqSNF;
+let c2=reqSNF*totalMass-totalSNF;
+
+let det=a1*b2-a2*b1;
+
+let butterKg=(c1*b2-c2*b1)/det;
+let smpKg=(a1*c2-a2*c1)/det;
+
+let butterCans=(butterKg/butterDensity)/40;
+let smpBags=smpKg/25;
+
+let currentMode=(document.getElementById("modeToggle")?document.getElementById("modeToggle").value:"plant");
+let mode=currentMode;
+
+if(mode==="plant"){
+ butterCans=roundHalf(butterCans);
+ smpBags=roundHalf(smpBags);
+}
+
+if(butterCans<0){butterCans=0;}
+
+let butterVol=butterCans*40;
+
+
+let rawMilk;
+
+if(mode==="plant"){
+
+// Adjust raw milk so final batch equals target
+rawMilk = batch - (butterVol + water + skim + leak + cream);
+
+// Round raw milk to nearest 10 L
+rawMilk=round10(rawMilk);
+
+// Recalculate final batch and correct deviation
+let finalBatch=rawMilk+butterVol+water+skim+leak+cream;
+let deviation=batch-finalBatch;
+
+if(deviation!==0){
+ rawMilk=round10(rawMilk+deviation);
+}
+
+}else{
+
+// LAB MODE → theoretical calculation without forcing batch balance
+rawMilk=batch-(water+skim+leak);
+
+}
+
+showResults(rawMilk,butterCans,smpBags,water,skim,leak,cream,wmp);
+
+setTimeout(function(){
+ let sel=document.getElementById("modeToggle");
+ if(sel){ sel.value=currentMode; }
+},0);
+
+}
+
+
+/* ================= RESULT RENDERER ================= */
+
+function showResults(raw,butter,smp,water,skim,leak,cream,wmp=0){
+
+result.innerHTML=`
+
+<div style="margin-bottom:10px;">
+<label style="font-weight:bold;">Mode:</label>
+<select id="modeToggle" onchange="calculate()" style="margin-left:6px;">
+<option value="plant" selected>Plant Mode</option>
+<option value="lab">Lab Mode</option>
+</select>
+</div>
+
+
+<div class="resultRow">
+<label class="rawColor">RCM (L)</label>
+<input id="r_raw" value="${round10(raw)}">
+</div>
+
+<div class="resultRow">
+<label class="butterColor">B.Oil (Cans)</label>
+<input id="r_butter" value="${parseFloat(butter.toFixed(2))}">
+</div>
+
+<div class="resultRow">
+<label class="smpColor">SMP (Bags)</label>
+<input id="r_smp" value="${parseFloat(smp.toFixed(2))}">
+</div>
+
+<div class="resultRow">
+<label style="color:#455a64;">WMP (Bags)</label>
+<input id="r_wmp" value="${wmp}">
+</div>
+
+<div class="resultRow">
+<label class="waterColor">Water (L)</label>
+<input id="r_water" value="${round10(water)}">
+</div>
+
+<div class="resultRow">
+<label class="skimColor">SSM (L)</label>
+<input id="r_skim" value="${round10(skim)}">
+</div>
+
+<div class="resultRow">
+<label style="color:#5d4037;">Leak Milk (L)</label>
+<input id="r_leak" value="${round10(leak)}">
+</div>
+
+<div class="resultRow">
+<label style="color:#8e24aa;">Cream (L)</label>
+<input id="r_cream" value="${round10(cream)}">
+</div>
+
+<div class="resultRow">
+<label class="batchColor">Total (L)</label>
+<input id="r_batch" readonly>
+</div>
+
+<div class="fatSnfPanel">
+<div class="fatCard">
+FAT %
+<span id="fatResult"></span>
+</div>
+
+<div class="snfCard">
+SNF %
+<span id="snfResult"></span>
+</div>
+
+</div>
+
+
+
+<button class="whatsappBtn" onclick="sendWhatsApp()">Send to WhatsApp</button>
+
+<button style="margin-top:10px;background:#1976d2;" onclick="printBatchCard()">Print Batch Card</button>
+
+`;
+
+document.querySelectorAll("#result input").forEach(el=>{
+el.setAttribute("inputmode","decimal");
+el.setAttribute("pattern","[0-9.]*");
+el.addEventListener("input",recalculate);
+});
+
+recalculate();
+try{autoCorrect();}catch(e){}
+}
+
+/* ================= LIVE RECALCULATION ================= */
+
+function recalculate(){
+
+// remember cursor position
+let active = document.activeElement;
+let cursorPos = active && active.selectionStart;
+
+// Sync only when editing result section
+const r = {
+  cream: val("r_cream"),
+  water: val("r_water"),
+  skim: val("r_skim"),
+  leak: val("r_leak"),
+  wmp: val("r_wmp")
+};
+
+const syncMap = {
+  r_cream:"creamQty",
+  r_water:"waterQty",
+  r_skim:"skimQty",
+  r_leak:"leakQty",
+  r_wmp:"wmpQty"
+};
+if(active && syncMap[active.id]){
+  let key = active.id.split("_")[1];
+  document.getElementById(syncMap[active.id]).value = r[key];
+}
+
+
+
+let batch=val("batchQty");
+let mode = document.getElementById("modeToggle") ? document.getElementById("modeToggle").value : "plant";
+let raw;
+
+if(mode === "plant"){
+    let butterVol = val("r_butter") * 40;
+    raw = batch - (butterVol + r.water + r.skim + r.leak + r.cream);
+    document.getElementById("r_raw").value = raw;
+}else{
+    raw = val("r_raw");
+}
+
+let butter=val("r_butter");
+let smp=val("r_smp");
+let water=val("r_water");
+let skim=val("r_skim");
+let creamResult=val("r_cream");
+let leak = val("leakQty");
+
+let rawFat=val("rawFat");
+let rawSNF=val("rawSNF");
+
+let rawKg=raw*densityFromFS(rawFat,rawSNF);
+let butterKg=butter*40*butterDensity;
+let smpKg=smp*25;
+let skimKg=skim*1.03;
+
+let cream=val("creamQty");
+let wmp=val("wmpQty");
+let wmpFat=val("wmpFat");
+let wmpSNF=val("wmpSNF");
+let creamFat=val("creamFat");
+let creamSNF=val("creamSNF");
+let creamDensity=densityFromFS(creamFat,creamSNF);
+let creamKg=cream*creamDensity;
+let wmpKg=wmp*25;
+
+let leakFat = val("leakFat");
+let leakSNF = val("leakSNF");
+let leakDensity = densityFromFS(leakFat, leakSNF);
+let leakKg = leak * leakDensity;
+
+let fat =
+(rawKg*rawFat/100) +
+(butterKg*butterFat) +
+(creamKg*creamFat/100) +
+(wmpKg*wmpFat/100) +
+(leakKg*leakFat/100);
+
+let snf =
+(rawKg*rawSNF/100) +
+(smpKg*smpSNF) +
+(skimKg*val("skimSNF")/100) +
+(creamKg*creamSNF/100) +
+(wmpKg*wmpSNF/100) +
+(leakKg*leakSNF/100);
+
+let finalMass=rawKg+butterKg+smpKg+skimKg+creamKg+wmpKg+leakKg+water;
+
+
+fatResult.innerText=(fat/finalMass*100).toFixed(2);
+snfResult.innerText=(snf/finalMass*100).toFixed(2);
+
+
+
+let finalVol = raw + (butter*40) + r.skim + r.water + r.leak + r.cream;
+document.getElementById("r_batch").value = round10(finalVol);
+
+// restore cursor position
+if(active && active.setSelectionRange){
+    active.setSelectionRange(cursorPos, cursorPos);
+}
+}
+
+
+
+
+/* ================= WHATSAPP EXPORT ================= */
+function sendWhatsApp(){
+
+let variant=document.getElementById("variant").value || "Milk";
+
+let raw=val("r_raw");
+let butter=val("r_butter");
+let smp=val("r_smp");
+let water=val("r_water");
+let skim=val("r_skim");
+let leak=val("r_leak");
+let cream=val("creamQty");
+let wmp=val("wmpQty");
+
+let now=new Date();
+let hour=now.getHours();
+
+let shift="Shift C";
+if(hour>=6 && hour<14) shift="Shift A";
+else if(hour>=14 && hour<22) shift="Shift B";
+
+let date=now.toLocaleDateString();
+let batchQty = document.getElementById("batchQty").value || val("r_batch");
+
+let ingredients=[
+["RCM",raw,"L"],
+["B.Oil",butter,"Cans"],
+["SMP",smp,"Bags"],
+["WMP",wmp,"Bags"],
+["Water",water,"L"],
+["SSM",skim,"L"],
+["Leak Milk",leak,"L"],
+["Cream",cream,"L"]
+];
+
+let text=`*${variant} Batch*
+
+Date : ${date}
+Shift : ${shift}
+Batch Qty : ${batchQty} L
+
+------------------------------
+`;
+
+for(let i=0;i<ingredients.length;i++){
+
+let name = ingredients[i][0];
+let value = ingredients[i][1];
+let unit = ingredients[i][2];
+
+if(value>0){
+
+let space = " ".repeat(Math.max(0,10-name.length));
+
+text+=`• *${name}*${space} : ${value} ${unit}
+
+`;
+
+}
+
+}
+
+text+=`------------------------------`;
+
+navigator.clipboard.writeText(text);
+window.open("https://wa.me/?text="+encodeURIComponent(text),"_blank");
+
+}
+
+
+
+// ===== CONSTANT MEMORY SYSTEM =====
+
+// Load saved constants
+if(localStorage.getItem("butterDensity")){
+butterDensity=parseFloat(localStorage.getItem("butterDensity"));
+}
+if(localStorage.getItem("butterFat")){
+butterFat=parseFloat(localStorage.getItem("butterFat"));
+}
+if(localStorage.getItem("smpSNF")){
+smpSNF=parseFloat(localStorage.getItem("smpSNF"));
+}
+
+// Populate settings panel with saved values
+window.addEventListener("load",function(){
+if(document.getElementById("butterDensityInput")){
+document.getElementById("butterDensityInput").value=(butterDensity).toFixed(2);
+}
+if(document.getElementById("butterFatInput")){
+document.getElementById("butterFatInput").value=(butterFat*100).toFixed(2);
+}
+if(document.getElementById("smpSNFInput")){
+document.getElementById("smpSNFInput").value=(smpSNF*100).toFixed(2);
+}
+});
+
+// Save constants when applied
+function applyConstants(){
+butterDensity=parseFloat(document.getElementById("butterDensityInput").value);
+butterFat=parseFloat(document.getElementById("butterFatInput").value)/100;
+smpSNF=parseFloat(document.getElementById("smpSNFInput").value)/100;
+
+localStorage.setItem("butterDensity",butterDensity);
+localStorage.setItem("butterFat",butterFat);
+localStorage.setItem("smpSNF",smpSNF);
+
+// close settings panel automatically
+document.getElementById("settingsPanel").style.display="none";
+
+// run solver again so butter oil and SMP suggestions update
+try{
+    calculate();
+}catch(e){}
+}
+
+
+
+// ===== FAST NUMERIC INPUT FILTER (numbers and dot only, except gearbox) =====
+document.addEventListener("input", function(e){
+  const el = e.target;
+  if(el.tagName === "INPUT" && !el.closest("#settingsPanel")){
+    el.value = el.value.replace(/[^0-9.]/g,'');
+  }
+});
+
+
+/* ===== HYBRID AUTO BATCH SUGGESTION ===== */
+window.addEventListener("load",function(){
+
+document.querySelectorAll("input,select").forEach(el=>{
+
+if(!el.closest("#settingsPanel")){
+
+el.addEventListener("input",function(){
+
+let batch=document.getElementById("batchQty").value;
+let fat=document.getElementById("rawFat").value;
+let snf=document.getElementById("rawSNF").value;
+
+if(batch && fat && snf){
+try{
+calculate();
+}catch(e){}
+}
+
+});
+
+}
+
+});
+
+});
+
+
+function autoCorrect(){
+
+let reqFat=parseFloat(document.getElementById("reqFat").value);
+let reqSNF=parseFloat(document.getElementById("reqSNF").value);
+
+let actualFat=parseFloat(fatResult.innerText);
+let actualSNF=parseFloat(snfResult.innerText);
+
+let fatDiff=reqFat-actualFat;
+let snfDiff=reqSNF-actualSNF;
+
+let tolerance=0.02;
+
+if(Math.abs(fatDiff)<tolerance && Math.abs(snfDiff)<tolerance){
+ return;
+}
+
+let batch=parseFloat(document.getElementById("batchQty").value);
+let butterCans=parseFloat(document.getElementById("butterCans").value||0);
+let smpBags=parseFloat(document.getElementById("smpBags").value||0);
+
+if(fatDiff>tolerance){
+ let butterNeeded=(batch*(fatDiff/100))/butterFat;
+ let cans=butterNeeded/(butterDensity*40);
+ document.getElementById("butterCans").value=(butterCans+cans).toFixed(2);
+}
+
+if(snfDiff>tolerance){
+ let smpNeeded=(batch*(snfDiff/100))/smpSNF;
+ let bags=smpNeeded/25;
+ document.getElementById("smpBags").value=(smpBags+bags).toFixed(2);
+}
+
+recalculate();
+try{autoCorrect();}catch(e){}
+}
+
+
+
+function printBatchCard(){
+
+let raw = parseFloat(document.getElementById("r_raw").value)||0;
+let butter = parseFloat(document.getElementById("r_butter").value)||0;
+let smp = parseFloat(document.getElementById("r_smp").value)||0;
+let water = parseFloat(document.getElementById("r_water").value)||0;
+let skim = parseFloat(document.getElementById("r_skim").value)||0;
+let leak = parseFloat(document.getElementById("leakQty").value)||0;
+
+let rawFat = parseFloat(document.getElementById("rawFat").value)||0;
+let rawSNF = parseFloat(document.getElementById("rawSNF").value)||0;
+
+let leakFat = parseFloat(document.getElementById("leakFat").value)||0;
+let leakSNF = parseFloat(document.getElementById("leakSNF").value)||0;
+
+let cream = parseFloat(document.getElementById("creamQty").value)||0;
+let creamFat = parseFloat(document.getElementById("creamFat").value)||0;
+let creamSNF = parseFloat(document.getElementById("creamSNF").value)||0;
+
+let wmp = parseFloat(document.getElementById("wmpQty").value)||0;
+let wmpFat = parseFloat(document.getElementById("wmpFat").value)||0;
+let wmpSNF = parseFloat(document.getElementById("wmpSNF").value)||0;
+
+
+let rawDensity = densityFromFS(rawFat,rawSNF);
+let leakDensity = densityFromFS(leakFat,leakSNF);
+let creamDensity = densityFromFS(creamFat,creamSNF);
+
+
+let rawKg = raw * rawDensity;
+let butterKg = butter * 40 * butterDensity;
+let smpKg = smp * 25;
+let skimKg = skim * 1.03;
+let leakKg = leak * leakDensity;
+let creamKg = cream * creamDensity;
+let wmpKg = wmp*25;
+let wmpKgFat = wmpKg * wmpFat / 100;
+let wmpKgSNF = wmpKg * wmpSNF / 100;
+
+
+let rawKgFat = rawKg * rawFat / 100;
+let rawKgSNF = rawKg * rawSNF / 100;
+
+let skimKgFat = skimKg * 0.05 / 100;
+let skimKgSNF = skimKg * 8.4 / 100;
+
+let leakKgFat = leakKg * leakFat / 100;
+let creamKgFat = creamKg * creamFat / 100;
+
+let leakKgSNF = leakKg * leakSNF / 100;
+let creamKgSNF = creamKg * creamSNF / 100;
+
+
+let butterKgFat = butterKg * butterFat;
+let smpKgSNF = smpKg * smpSNF;
+
+let totalMass = rawKg + butterKg + smpKg + skimKg + leakKg + creamKg + wmpKg + water;
+let totalFat = rawKgFat + skimKgFat + leakKgFat + butterKgFat + creamKgFat + wmpKgFat;
+let totalSNF = rawKgSNF + skimKgSNF + leakKgSNF + smpKgSNF + creamKgSNF + wmpKgSNF;
+
+let finalFat = (totalFat/totalMass)*100;
+let finalSNF = (totalSNF/totalMass)*100;
+
+let now = new Date();
+let hour = now.getHours();
+
+let shift = "Shift C";
+if(hour >= 6 && hour < 14) shift = "Shift A";
+else if(hour >= 14 && hour < 22) shift = "Shift B";
+
+let date = now.toLocaleDateString();
+
+let w = window.open("", "_blank");
+
+w.document.write(`
+<html>
+<head>
+<style>
+body{font-family:Arial;}
+table{border-collapse:collapse;width:100%;margin-top:20px;}
+th{border:2px solid black;padding:12px;background:#f2f2f2;}
+td{border:1.5px solid black;padding:12px;text-align:center;}
+
+/* ===== Professional Dairy Console Adjustments ===== */
+
+/* tighter numeric rows */
+
+
+/* labels slightly lighter but bold */
+
+
+/* numbers right aligned like plant consoles */
+
+
+/* editable fields – border highlight only (no fill) */
+#r_water,#r_skim,#r_leak,#r_cream{
+background:#ffffff;
+border:2px solid #f2c94c;
+}
+
+/* total row – clearer but simple */
+#r_batch{
+background:#ffffff;
+border:2px solid #7cb342;
+font-weight:900;
+}
+
+/* FAT/SNF industrial style */
+.fatCard,.snfCard{
+font-size:18px;
+letter-spacing:0.5px;
+padding:14px;
+border-radius:10px;
+}
+
+</style>
+</head>
+<body>
+
+<h2 style="text-align:center">MADURAI DISTRICT COOPERATIVE MILK PRODUCERS UNION LTD</h2>
+<h3 style="text-align:center">BATCH PREPARATION</h3>
+
+<div style="display:flex;justify-content:space-between;margin-top:10px;font-weight:bold;">
+<div>DATE : ${date}</div>
+<div>SHIFT : ${shift}</div>
+</div>
+
+<table>
+
+<tr>
+<th>S.NO</th>
+<th>PARTICULARS</th>
+<th>QTY</th>
+<th>KG</th>
+<th>FAT %</th>
+<th>SNF %</th>
+<th>KG FAT</th>
+<th>KG SNF</th>
+</tr>
+
+
+${(()=>{
+let rows=[];
+let i=1;
+
+rows.push(`
+<tr>
+<td>${i++}</td>
+<td>Whole Milk</td>
+<td>${raw}</td>
+<td>${rawKg.toFixed(1)}</td>
+<td>${rawFat}</td>
+<td>${rawSNF}</td>
+<td>${rawKgFat.toFixed(1)}</td>
+<td>${rawKgSNF.toFixed(1)}</td>
+</tr>`);
+
+if(water>0){
+rows.push(`
+<tr>
+<td>${i++}</td>
+<td>Water</td>
+<td>${water}</td>
+<td>${water}</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>`);
+}
+
+if(skim>0){
+rows.push(`
+<tr>
+<td>${i++}</td>
+<td>Skim Milk</td>
+<td>${skim}</td>
+<td>${skimKg.toFixed(1)}</td>
+<td>0.05</td>
+<td>8.40</td>
+<td>${skimKgFat.toFixed(1)}</td>
+<td>${skimKgSNF.toFixed(1)}</td>
+</tr>`);
+}
+
+if(leak>0){
+rows.push(`
+<tr>
+<td>${i++}</td>
+<td>Leak Milk</td>
+<td>${leak}</td>
+<td>${leakKg.toFixed(1)}</td>
+<td>${leakFat}</td>
+<td>${leakSNF}</td>
+<td>${leakKgFat.toFixed(1)}</td>
+<td>${leakKgSNF.toFixed(1)}</td>
+</tr>`);
+}
+
+if(cream>0){
+rows.push(`
+<tr>
+<td>${i++}</td>
+<td>Cream</td>
+<td>${cream}</td>
+<td>${creamKg.toFixed(1)}</td>
+<td>${creamFat}</td>
+<td>${creamSNF}</td>
+<td>${creamKgFat.toFixed(1)}</td>
+<td>${creamKgSNF.toFixed(1)}</td>
+</tr>`);
+}
+
+if(wmp>0){
+rows.push(`
+<tr>
+<td>${i++}</td>
+<td>WMP</td>
+<td>${(wmp*25)}</td>
+<td>${wmpKg.toFixed(1)}</td>
+<td>${wmpFat}</td>
+<td>${wmpSNF}</td>
+<td>${wmpKgFat.toFixed(1)}</td>
+<td>${wmpKgSNF.toFixed(1)}</td>
+</tr>`);
+}
+
+if(butter>0){
+rows.push(`
+<tr>
+<td>${i++}</td>
+<td>Butter Oil</td>
+<td>${butter*40}</td>
+<td>${butterKg.toFixed(1)}</td>
+<td>82.5</td>
+<td>0</td>
+<td>${butterKgFat.toFixed(1)}</td>
+<td>0</td>
+</tr>`);
+}
+
+if(smp>0){
+rows.push(`
+<tr>
+<td>${i++}</td>
+<td>SMP</td>
+<td>${smp*25}</td>
+<td>${smpKg.toFixed(1)}</td>
+<td>0</td>
+<td>96.5</td>
+<td>0</td>
+<td>${smpKgSNF.toFixed(1)}</td>
+</tr>`);
+}
+
+return rows.join('');
+})()}
+
+<tr>
+<td colspan="4"><b>TOTAL</b></td>
+
+<td style="background:#ffe97f;font-weight:bold;">${finalFat.toFixed(2)}</td>
+<td style="background:#ffe97f;font-weight:bold;">${finalSNF.toFixed(2)}</td>
+<td>${totalFat.toFixed(1)}</td>
+<td>${totalSNF.toFixed(1)}</td>
+</tr>
+
+</table>
+</body>
+</html>
+`);
+
+w.document.close();
+w.print();
+}
+
+
+
+/* ===== FORCE NUMERIC KEYPAD ON MOBILE ===== */
+document.addEventListener("DOMContentLoaded", function(){
+document.querySelectorAll("input").forEach(el=>{
+if(!el.closest("#settingsPanel")){
+el.setAttribute("inputmode","decimal");
+el.setAttribute("pattern","[0-9.]*");
+}
+});
+});
+
+</script>
+
+</div>
+<script>
+
+
+
+
+
+
+
+)(),
+batch:document.getElementById("batchQty").value||document.getElementById("r_batch")?.value||0,
+
+rcm:document.getElementById("r_raw")?.value||0,
+rcmFat:document.getElementById("rawFat")?.value||0,
+rcmSNF:document.getElementById("rawSNF")?.value||0,
+boil:document.getElementById("r_butter")?.value||0,
+smp:document.getElementById("r_smp")?.value||0,
+water:document.getElementById("r_water")?.value||0,
+ssm:document.getElementById("r_skim")?.value||0,
+leak:document.getElementById("r_leak")?.value||0,
+leakFat:document.getElementById("leakFat")?.value||0,
+leakSNF:document.getElementById("leakSNF")?.value||0,
+cream:document.getElementById("r_cream")?.value||0,
+fat:document.getElementById("fatResult")?.innerText||0,
+snf:document.getElementById("snfResult")?.innerText||0
+};
+
+let logs=JSON.parse(localStorage.getItem("batchLogs")||"[]");
+logs.unshift(log);
+localStorage.setItem("batchLogs",JSON.stringify(logs));
+}
+
+
+function formatFS(f,s){
+
+if(!f || !s){
+  return "-- / --";
+}
+
+let fat = parseFloat(f);
+let snf = parseFloat(s);
+
+let fatStr = (fat % 1 === 0) ? fat.toFixed(1) : fat;
+let snfStr = (snf % 1 === 0) ? snf.toFixed(1) : snf;
+
+return fatStr + " / " + snfStr;
+}
+
+
+
+container.innerHTML=logs.map((l,i)=>`
+<div style="background:white;padding:18px;border-radius:12px;
+box-shadow:0 8px 18px rgba(0,0,0,0.12);">
+
+<div style="display:flex;justify-content:space-between;">
+<b>${l.variant} Batch</b>
+<button onclick="deleteLog(${i})" style="background:#e53935;width:auto;padding:6px 12px;">Delete</button>
+</div>
+
+<div style="margin-top:6px;color:#555;">
+Date : ${l.date} | ${l.shift}<br>
+Batch : ${l.batch} L
+</div>
+
+<hr>
+
+${l.rcm>0 ? `RCM : ${l.rcm} L (${formatFS(l.rcmFat,l.rcmSNF)})<br>` : ``}
+${l.boil>0 ? `B.Oil : ${l.boil} Cans<br>` : ``}
+${l.smp>0 ? `SMP : ${l.smp} Bags<br>` : ``}
+${l.water>0 ? `Water : ${l.water} L<br>` : ``}
+${l.ssm>0 ? `SSM : ${l.ssm} L<br>` : ``}
+${l.leak>0 ? `Leak : ${l.leak} L (${formatFS(l.leakFat,l.leakSNF)})<br>` : ``}
+${l.cream>0 ? `Cream : ${l.cream} L<br>` : ``}
+
+<hr>
+
+FAT : <b>${l.fat}</b> % | SNF : <b>${l.snf}</b> %
+
+</div>
+`).join("");
+}
+
+
+
+let oldSend=window.sendWhatsApp;
+window.sendWhatsApp=function(){
+saveBatchLog();
+oldSend();
+};
+
+let oldPrint=window.printBatchCard;
+window.printBatchCard=function(){
+saveBatchLog();
+oldPrint();
+};
+
+</script>
+
+</body>
+</html>
